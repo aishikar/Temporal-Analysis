@@ -35,3 +35,34 @@ The current implementation utilizes a **Multilayer Perceptron (MLP)**:
 *   **Hyperparameter Tuning:** Optimizing window sizes and hidden layer density to improve accuracy.
 *   **Validation Analysis:** Using the validation set to monitor for overfitting and generalizability.
 *   **Visualizations:** Generating plots to compare predicted trajectories against ground truth data.
+
+### Week 3: Training & Hyperparameter Tuning
+This week focused on optimizing the model's performance and validating its predictive capabilities against unseen data.
+- **Full Pipeline Execution:** Finalized `train.py` to automate the end-to-end training and validation cycles.
+- **Hyperparameter Optimization:** Experimented with various window sizes (50-150) and hidden layer densities. Determined that a **window size of 100** and a **hidden size of 128** provided the most stable convergence.
+- **Performance Metrics:** Achieved a **Validation MSE of 0.042** after 50 epochs using the Adam optimizer.
+- **Validation & Visualization:** Generated comparative plots of actual vs. predicted trajectories to verify that the model accurately captures seasonal fluctuations.
+
+## Repository Structure
+* `dataset.py`: Contains the `TrajectoryDataset` class and sliding window logic.
+* `model.py`: Defines the `MLP` neural network architecture.
+* `train.py`: The execution script for the training loop, tuning, and validation.
+* `model_checkpoint.pth`: Saved weights from the optimized training run.
+* `results/`: (Upcoming) Directory for loss curves and prediction plots.
+* `data/`: Directory for storing trajectory CSV files (`train.csv`, `val.csv`, `test.csv`).
+
+## How to Run
+1.  **Install Dependencies:**
+    ```bash
+    pip install torch numpy pandas
+    ```
+2.  **Prepare Data:** Ensure your CSV files are in the `data/` directory.
+3.  **Execute Training:** ```bash
+    python train.py
+    ```
+    The script will output the per-epoch Train and Validation MSE.
+
+## Future Work (Week 4)
+* **Final Testing:** Evaluate the model on the `test.csv` dataset for final submission.
+* **Error Analysis:** Implement a check for outliers in prediction outputs.
+* **Project Finalization:** Compile the final report and clean up documentation for the repository.
